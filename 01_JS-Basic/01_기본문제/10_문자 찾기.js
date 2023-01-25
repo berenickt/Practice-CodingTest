@@ -14,14 +14,14 @@ function solution(s, t) {
   return answer;
 }
 
-let str = 'COMPUTERPROGRAMMING';
-console.log(solution(str, 'R'));
+let str = "COMPUTERPROGRAMMINGR";
+console.log(solution(str, "R"));
 
-// -----------------------------------
+// split : 지정한 구분자를 이용하여 여러 개의 문자열로 나눔 ----------------------
 function solution2(s, t) {
   let answer = s.split(t).length;
   return answer - 1;
 }
 
-let str2 = 'COMPUTERPROGRAMMING';
-console.log(solution2(str2, 'R'));
+let str2 = "COMPUTERPROGRAMMINGR";
+console.log(solution2(str2, "R"));

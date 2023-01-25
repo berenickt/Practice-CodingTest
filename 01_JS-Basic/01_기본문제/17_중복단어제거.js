@@ -9,9 +9,13 @@
 function solution(s) {
   let answer;
   //console.log(s.indexOf("time"));
-  answer = s.filter(function (v, i) {
+
+  // ** s.indexOf(v) === i을 만족하는 요소만 따로 배열으로
+  answer = s.filter((v, i) => {
+    // console.log(s.indexOf(v), i, v);
     return s.indexOf(v) === i;
   });
+
   return answer;
 }
 let str = ['good', 'time', 'good', 'time', 'student'];

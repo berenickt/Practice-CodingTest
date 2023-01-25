@@ -1,3 +1,9 @@
+/**
+ * N개이 숫자가 입력되면 오름차순으로 정렬하여 출력하는 프로그램
+ * 정렬하는 방법은 삽입정렬
+ * @param {*} arr 자연수 N(1<=N<=100)이 여러 개 들어있는 배열
+ * @returns
+ */
 function solution(arr) {
   let answer = arr;
   for (let i = 0; i < arr.length; i++) {

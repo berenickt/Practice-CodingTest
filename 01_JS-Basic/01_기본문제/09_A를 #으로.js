@@ -5,23 +5,23 @@
  * @returns
  */
 function solution(s) {
-  let answer = '';
+  let answer = "";
   for (let x of s) {
-    if (x == 'A') answer += '#';
+    if (x === "A") answer += "#";
     else answer += x;
   }
   return answer;
 }
 
-let str1 = 'BANANA';
-console.log(solution(str1));
+let str1 = "BANANA";
+console.log(solution(str1)); // B#N#N#
 
-// -----------------------------------
+// 정규표현식으로 -----------------------------------
 function solution2(s) {
   let answer = s;
-  answer = answer.replace(/A/g, '#');
+  answer = answer.replace(/A/g, "#");
   return answer;
 }
 
-let str2 = 'BANANA';
+let str2 = "BANANA";
 console.log(solution2(str2));

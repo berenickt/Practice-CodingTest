@@ -1,3 +1,8 @@
+/**
+ * 자연수 N이 주어지면 1부터 N까지의 원소를 갖는 집합의 부분집합을 모두 출력하는 프로그램
+ * @param {*} n 자연수 N(1<=N<=10)
+ * @returns
+ */
 function solution(n) {
   let answer = [];
   let ch = Array.from({ length: n + 1 }, () => 0);

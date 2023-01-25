@@ -1,3 +1,8 @@
+/**
+ * 그림과 같은 이진트리의 전위순회, 후위 순회 연습
+ * @param {*} n
+ * @returns
+ */
 function solution(n) {
   let answer = '';
   function DFS(v) {

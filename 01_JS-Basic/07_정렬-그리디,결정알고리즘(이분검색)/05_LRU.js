@@ -1,3 +1,9 @@
+/**
+ *
+ * @param {*} size
+ * @param {*} arr
+ * @returns
+ */
 function solution(size, arr) {
   let answer = Array.from({ length: size }, () => 0);
   arr.forEach((x) => {
