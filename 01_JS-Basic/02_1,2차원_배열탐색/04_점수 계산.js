@@ -16,8 +16,9 @@
  * @returns
  */
 function solution(arr) {
-  let answer = 0,
-    cnt = 0;
+  let answer = 0; // 총 누적점수
+  let cnt = 0; // 1을 만났을 떄 누적점수
+
   for (let x of arr) {
     if (x === 1) {
       cnt++;
