@@ -4,18 +4,19 @@
  * @param {*} arr 자연수 N(1<=N<=100)이 여러 개 들어있는 배열
  * @returns
  */
-
 function solution(arr) {
-  let answer = arr;
+  let answer = arr; // 얕은 복사
+
+  // 순회
   for (let i = 0; i < arr.length - 1; i++) {
     for (let j = 0; j < arr.length - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // 바꾸기
       }
     }
   }
+
   return answer;
 }
 
-let arr = [13, 5, 11, 7, 23, 15];
-console.log(solution(arr));
+console.log(solution([13, 5, 11, 7, 23, 15]));
