@@ -13,4 +13,4 @@ function solution(n) {
   DFS(n);
 }
 
-solution(3);
+solution(3); // 1 2 3
