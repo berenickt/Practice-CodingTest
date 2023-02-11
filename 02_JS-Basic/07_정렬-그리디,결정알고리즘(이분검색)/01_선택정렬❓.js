@@ -16,6 +16,7 @@ function solution(arr) {
       if (arr[j] < arr[index]) index = j;
     }
     [arr[i], arr[index]] = [arr[index], arr[i]]; // 서로 바꾸기
+    console.log(`${i}회전: ${arr}`);
   }
   return answer;
 }

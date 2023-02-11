@@ -1,40 +1,21 @@
 /**
  * N개이 숫자가 입력되면 오름차순으로 정렬하여 출력하는 프로그램
  * 정렬하는 방법은 삽입정렬
- * @param {*} arr 자연수 N(1<=N<=100)이 여러 개 들어있는 배열
+ * @param {*} array 1~100까지의 자연수가 여러 개 들어있는 배열
  * @returns
  */
-function solution(arr) {
-  let answer = arr;
-  for (let i = 0; i < arr.length; i++) {
-    let tmp = arr[i],
-      j;
-    for (j = i - 1; j >= 0; j--) {
-      if (arr[j] > tmp) arr[j + 1] = arr[j];
-      else break;
+function insertionSort(array) {
+  for (let i = 1; i < array.length; i++) {
+    let cur = array[i];
+    let left = i - 1;
+
+    while (left >= 0 && array[left] > cur) {
+      array[left + 1] = array[left];
+      left--;
     }
-    arr[j + 1] = tmp;
+    array[left + 1] = cur;
+    console.log(`${i}회전: ${array}`);
   }
-  return answer;
+  return array;
 }
-
-let arr = [11, 7, 5, 6, 10, 9];
-console.log(solution(arr));
-
-// -----------------------------------------
-function solution2(arr) {
-  let answer = [];
-  answer.push(arr[0]);
-  for (let i = 1; i < arr.length; i++) {
-    for (let j = 0; j < answer.length; j++) {
-      if (arr[i] < answer[j]) {
-        answer.splice(j, 0, arr[i]);
-        break;
-      }
-    }
-  }
-  return answer;
-}
-
-let arr2 = [11, 7, 5, 6, 10, 9];
-console.log(solution2(arr2));
+console.log(insertionSort([5, 4, 3, 2, 1]));

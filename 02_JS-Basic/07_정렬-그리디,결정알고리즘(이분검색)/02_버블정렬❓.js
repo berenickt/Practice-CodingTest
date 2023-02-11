@@ -4,7 +4,7 @@
  * @param {*} arr 자연수 N(1<=N<=100)이 여러 개 들어있는 배열
  * @returns
  */
-function solution(arr) {
+function bubbleSort(arr) {
   let answer = arr; // 얕은 복사
 
   // 순회
@@ -14,9 +14,10 @@ function solution(arr) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]]; // 바꾸기
       }
     }
+    console.log(`${i}회전: ${arr}`);
   }
 
   return answer;
 }
 
-console.log(solution([13, 5, 11, 7, 23, 15]));
+console.log(bubbleSort([5, 3, 2, 4, 1]));
