@@ -30,4 +30,4 @@ function solution2(size, array) {
   return answer;
 }
 
-console.log(solution2(5, [1, 2, 3, 2, 6, 2, 3, 5, 7]));
+console.log(solution2(5, [1, 2, 3, 2, 6, 2, 3, 5, 7])); // [ 7, 5, 3, 2, 6 ]

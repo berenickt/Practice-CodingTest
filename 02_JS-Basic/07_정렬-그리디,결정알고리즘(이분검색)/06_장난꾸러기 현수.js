@@ -10,22 +10,30 @@
  * 선생님은 이 사실을 모르고 학생들에게 서있는 순서대로 번호를 부여했습니다.
  *
  * 현수와 짝꿍이 자리를 바꾼 반 학생들의 일렬로 서있는 키 정보가 주어질 때,
- * 현수가 받은 번호와 현수 짝꿍이 받은 번호를 차례로 출력하는 프로그램을
+ * 현수가 받은 번호와 현수 짝꿍이 받은 번호를 차례로 출력하는 프로그램
+ *
  * cf. 첫 번째 줄에 자연수 N(5<=N<=100)이 주어진다.
  * cf. 두 번째 줄에 제일 앞에부터 일렬로 서있는 학생들의 키가 주어진다.
  * cf. 키(높이) 값 H는 (120<=H<=180)의 자연
- * @param {*} arr
- * @returns
+ * @param {*} array 학생들이 키 순으로 정렬된 배열
+ * @returns [현수가 받은 번호, 짝궁이 받은 번호]
+ *
+ * 1. 오름차순 정렬
+ * 2. 오름차순 정렬된 것 중에서 순서가 안맞는 인덱스가 현수
  */
-function solution(arr) {
+function solution(array) {
   let answer = [];
-  let sortArr = arr.slice();
-  sortArr.sort((a, b) => a - b);
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== sortArr[i]) answer.push(i + 1);
+  let sortArr = array.slice(); // 1차원이면 깊은복사, 2차원이면 얕은복사
+
+  sortArr.sort((a, b) => a - b); // 오름차순
+
+  // (입력배열요소 !== 오름차 정렬된 배열요소)면, 정답
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] !== sortArr[i]) answer.push(i + 1);
   }
+
   return answer;
 }
 
-let arr = [120, 125, 152, 130, 135, 135, 143, 127, 160];
-console.log(solution(arr));
+console.log(solution([120, 125, 152, 130, 135, 135, 143, 127, 160])); // [ 3, 8 ], 현수가 152, 짝궁이 127
+console.log(solution([120, 130, 150, 150, 130, 150])); // [ 3, 5 ]
