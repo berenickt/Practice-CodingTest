@@ -3,6 +3,10 @@
  * 정렬하는 방법은 삽입정렬
  * @param {*} array 1~100까지의 자연수가 여러 개 들어있는 배열
  * @returns
+ *
+ * ** 삽입 정렬(Insertion Sort)
+ * 1. 아직 정렬되지 않은 임의의 데이터를 이미 정렬된 배열 부분과 비교하여,
+ * 2. 자신의 위치를 찾아 삽입함으로써 정렬
  */
 function insertionSort(array) {
   for (let i = 1; i < array.length; i++) {

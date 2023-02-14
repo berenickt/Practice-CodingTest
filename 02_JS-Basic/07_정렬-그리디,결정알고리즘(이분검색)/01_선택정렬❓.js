@@ -4,6 +4,12 @@
  *
  * @param {*} arr 자연수 N(1<=N<=100)이 여러 개 들어있는 배열
  * @returns
+ *
+ * ** 선택정렬 알고리즘(Selection Sort)
+ * 1. 가장 작은 값을 탐색
+ * 2. 그 값을 정렬이 안된 배열의 맨 앞에 위치한 값과 교체
+ *
+ * 1.
  */
 function solution(arr) {
   let answer = arr;
