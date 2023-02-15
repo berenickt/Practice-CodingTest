@@ -28,6 +28,7 @@ function solution(dvdNum, songs) {
 
   while (left <= right) {
     let mid = parseInt((left + right) / 2);
+
     if (count(songs, mid) <= dvdNum) {
       answer = mid;
       right = mid - 1;
