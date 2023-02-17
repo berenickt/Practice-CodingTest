@@ -6,24 +6,26 @@
  * 제한시간 M안에 N개의 문제 중 최대점수를 얻을 수 있도록 해야 합니다.
  * (해당문제는 해당시간이 걸리면 푸는 걸로 간주한다, 한 유형당 한개만 풀 수 있음)
  *
- * cf. 첫 번째 줄에 문제의 개수N(1<=N<=20)과 제한 시간 M(10<=M<=300)이 주어짐
- * cf. 두 번째 줄부터 N줄에 걸쳐 문제를 풀었을 때의 점수와 푸는데 걸리는 시간이 주어짐
- * @param {*} m
- * @param {*} ps
- * @param {*} pt
- * @returns
+ * @param {*} timeLimit - 제한시간
+ * @param {*} point - 문제를 풀었을 떄 점수
+ * @param {*} timeTaken - 문제 푸는데 걸리는 시간
+ * @returns 제한시간 내 얻을 수 있는 최대점수
  */
-
-function solution(m, ps, pt) {
+function solution(timeLimit, point, timeTaken) {
   let answer = Number.MIN_SAFE_INTEGER;
-  let n = ps.length;
-  function DFS(L, sum, time) {
-    if (time > m) return;
-    if (L === n) {
-      answer = Math.max(answer, sum);
-    } else {
-      DFS(L + 1, sum + ps[L], time + pt[L]);
-      DFS(L + 1, sum, time);
+  let problemNum = point.length;
+
+  function DFS(level, sum, time) {
+    if (time > timeLimit) return; // 제한시간을 넘기면, 종료
+
+    if (level === problemNum) {
+      // console.log(sum); // 32가지 경우의 수
+      answer = Math.max(answer, sum); // 기존 sum보다 크면, 새 sum으로 바꿔주기
+    }
+    // 문제를 풀지, 말지 결정
+    else {
+      DFS(level + 1, sum + point[level], time + timeTaken[level]);
+      DFS(level + 1, sum, time); // 다음 Level로만 이동 (문제를 안푸는 경우)
     }
   }
 
@@ -31,6 +33,4 @@ function solution(m, ps, pt) {
   return answer;
 }
 
-let ps = [10, 25, 15, 6, 7];
-let pt = [5, 12, 8, 3, 4];
-console.log(solution(20, ps, pt));
+console.log(solution(20, [10, 25, 15, 6, 7], [5, 12, 8, 3, 4])); // 41
