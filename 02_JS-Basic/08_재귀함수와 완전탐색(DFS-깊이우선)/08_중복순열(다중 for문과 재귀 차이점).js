@@ -11,7 +11,7 @@ function solution(bead, pick) {
   let temp = Array.from({ length: pick }, () => 0); // 뽑는 횟수가 저장되는 곳
 
   function DFS(level) {
-    // 뽑은 횟수만큼 되면, 얕은 복사로 새 배열 객체를 정답배열에 넣기
+    // 뽑은 횟수만큼 되면, 깊은 복사로 새 배열 객체를 정답배열에 넣기
     if (level === pick) answer.push(temp.slice());
     else {
       // 번호가 적힌 구슬까지 순회
