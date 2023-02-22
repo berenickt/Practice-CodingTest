@@ -1,26 +1,30 @@
 /**
- * N개의 정수가 주어지면 그 숫자들 중 K개를 뽑는 조합의 합이
- * 임의의 정수 M의 배수인 개수는 몇 개가 있는지 출력하는 프로그램
+ * num개의 정수가 주어지면 그 숫자들 중 pick개를 뽑는 조합의 합이
+ * 임의의 정수 randomNum의 배수인 개수는 몇 개가 있는지 출력하는 프로그램
  *
  * e.g. 5개의 숫자 2 4 5 8 12가 주어지고,
- * 3개를 뽑은 조합의 합이 6의 배수인 조합을 찾으면 4+8+12 2+4+12로 2가지가 있습니다
+ * 3개를 뽑은 조합의 합이 6의 배수인 조합을 찾으면,
+ * (4 + 8 + 12 = 24), (2 + 4 + 12 = 18)로 2가지가 있습니다
  *
- * 두 번째 줄에는 N개의 정수가 주어진다.
- * 세 번째 줄에 M이 주어집니다.
- * @param {*} n 정수의 개수 N(3<=N<=20)
- * @param {*} k 임의의 정수 K(2<=K<=N)
- * @param {*} arr
- * @param {*} m
- * @returns 총 가지수
+ * @param {*} num  3 <= num <= 20
+ * @param {*} pick 2 <= pick <= num
+ * @param {*} arr num개의 배열
+ * @param {*} randomNum 임의의 정수
+ * @returns num중 pick개 뽑는 조합의 합이 randomNum의 배수인 경우의 수
  */
-function solution(n, k, arr, m) {
+function solution(num, pick, arr, randomNum) {
   let answer = 0;
-  function DFS(L, s, sum) {
-    if (L === k) {
-      if (sum % m === 0) answer++;
+  let temp = Array.from({ length: pick }, () => 0); // ** 확인용
+
+  function DFS(level, start, sum) {
+    if (level === pick) {
+      // randomNum의 배수이면, 경우의 수 추가
+      if (sum % randomNum === 0) answer++;
+      console.log(sum, temp); // ** 확인용
     } else {
-      for (let i = s; i < n; i++) {
-        DFS(L + 1, i + 1, sum + arr[i]);
+      for (let index = start; index < num; index++) {
+        temp[level] = arr[index]; // ** 확인용
+        DFS(level + 1, index + 1, sum + arr[index]);
       }
     }
   }
@@ -29,5 +33,4 @@ function solution(n, k, arr, m) {
   return answer;
 }
 
-let arr = [2, 4, 5, 8, 12];
-console.log(solution(5, 3, arr, 6));
+console.log(solution(5, 3, [2, 4, 5, 8, 12], 6)); // 2
