@@ -18,7 +18,7 @@ function solution(num, pick, arr, randomNum) {
 
   function DFS(level, start, sum) {
     if (level === pick) {
-      // randomNum의 배수이면, 경우의 수 추가
+      // randomNum의 배수(6의 배수)이면, 경우의 수 추가
       if (sum % randomNum === 0) answer++;
       console.log(sum, temp); // ** 확인용
     } else {
@@ -33,4 +33,5 @@ function solution(num, pick, arr, randomNum) {
   return answer;
 }
 
+// 5개의 숫자 중 3개를 뽑는데, 6의 배수인 경우의 수
 console.log(solution(5, 3, [2, 4, 5, 8, 12], 6)); // 2
