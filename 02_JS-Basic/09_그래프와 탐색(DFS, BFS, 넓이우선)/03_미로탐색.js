@@ -1,22 +1,40 @@
+/**
+ * 7*7 격자판 미로를 탈춣하는 경로의 가지수를 출력하는 프로그램
+ * cf. 격자판의 1은 벽, 0은 통로
+ * cf. 격자판의 움직임은 상화좌우로만 움직인다.
+ *
+ * @param {*} board 7행7열의 2차원 배열 정보
+ * @returns 미로를 탈출하는 경로의 가지 수
+ */
 function solution(board) {
   let answer = 0;
+
+  // 격자판에서 상하좌우로 움직이므로 dx,dy를 설정
   let dx = [-1, 0, 1, 0];
   let dy = [0, 1, 0, -1];
+
   function DFS(x, y) {
+    // 도착점에 도달하면, 경로 방법 수++
     if (x === 6 && y === 6) answer++;
     else {
+      // 상, 우, 하, 좌 순서로 4방향 움직이게
+      // (-1, 0), (0, 1), (1, 0), (0, -1)로 움직이게
       for (let k = 0; k < 4; k++) {
+        // 다음 좌표
         let nx = x + dx[k];
         let ny = y + dy[k];
+
+        // 움직임이 격자판 밖으로 벗어나면 안되고, 움직일 칸에 수가 0이면 이동
         if (nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] === 0) {
-          board[nx][ny] = 1;
+          board[nx][ny] = 1; // 뒤로 돌아가지 않게 하기 위해 전에 칸은 1로 설정
           DFS(nx, ny);
-          board[nx][ny] = 0;
+          board[nx][ny] = 0; // 뒤로 돌아갈 때에는 다시 0으로
         }
       }
     }
   }
-  board[0][0] = 1;
+
+  board[0][0] = 1; // 출발할 수 있도록 1로 설정
   DFS(0, 0);
   return answer;
 }
@@ -31,4 +49,4 @@ let arr = [
   [1, 0, 0, 0, 0, 0, 0],
 ];
 
-console.log(solution(arr));
+console.log(solution(arr)); // 8
