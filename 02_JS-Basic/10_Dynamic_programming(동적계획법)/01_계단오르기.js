@@ -1,16 +1,41 @@
+/**
+ * 철수는 계단을 오를 떄, 한 번에 한 계단 도는 두 계단씩 올라간다.
+ *
+ * e.g. 만약 총 4계단을 오른다면, 그 방법의 수는
+ * 1+1+1+1, 1+1+2, 1+2+1, 2+1+1, 2+2로 5가지이다.
+ *
+ * 그러다면 총 N계단일 떄, 철수가 올라갈 수 있는 방법의 수
+ * @param {*} n 계단의 수 ( 3 <= n <= 45 )
+ * @returns 철수가 올라갈 수 있는 방법의 수
+ */
 function solution(n) {
-  let answer = 0;
-  let dy = Array.from({ length: n + 1 }, () => 0);
+  // 계단 크기만큼 0으로 초기화된 배열
+  let stairs = Array.from({ length: n + 1 }, () => 0);
 
-  dy[1] = 1;
-  dy[2] = 2;
+  // 계단을 올라가는 방법
+  stairs[1] = 1; // 첫 번쨰 계단을 가는 경우의 수 1개
+  stairs[2] = 2; // 두 번쨰 계단을 가는 경우의 수 2개
 
+  // 3 번쨰 계단부터 시작, 각 계단을 가는 경우의 수
   for (let i = 3; i <= n; i++) {
-    dy[i] = dy[i - 2] + dy[i - 1];
+    stairs[i] = stairs[i - 2] + stairs[i - 1];
+    // s[3] = s[1] + s[2]
+    // s[4] = s[2] + s[3]
+    // s[5] = s[3] + s[4]
+    // s[6] = s[4] + s[5]
+    // s[7] = s[5] + s[6]
   }
 
-  answer = dy[n];
-  return answer;
+  return stairs[n];
 }
 
-console.log(solution(7));
+console.log(solution(7)); // 21
+
+/** 동적계획법(Dynamic programming)
+ * 문제가 어려워서 한번에 푸는 것이 불가능할 때,
+ * 쪼개서 작은단위로 문제를 풀다가 큰 단위로 넓혀가며 문제를 풀어나가는 방법
+ *
+ * 배열을 사용해서 풀 수 있다. (cf. dynamic배열을 dy배열로 약어로 표현)
+ * DP 문제는 Dynamic 배열이 꼭 필요합니다.
+ * 동적계획법은 관계를 통해 문제를 해결한다(점화식 관계)
+ */

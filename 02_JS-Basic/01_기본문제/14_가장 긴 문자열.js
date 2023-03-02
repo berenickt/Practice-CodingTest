@@ -6,7 +6,7 @@
  * @returns 가장 긴 문자열
  */
 function solution(s) {
-  let answer = "";
+  let answer = '';
   let max = Number.MIN_SAFE_INTEGER; // 가장 작은 수
 
   for (let x of s) {
@@ -19,5 +19,5 @@ function solution(s) {
   return answer;
 }
 
-let str = ["teacher", "time", "student", "beautiful", "good"];
+let str = ['teacher', 'time', 'student', 'beautiful', 'good'];
 console.log(solution(str)); // beautiful
