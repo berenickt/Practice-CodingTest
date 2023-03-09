@@ -1,11 +1,19 @@
-function evenOdd(num) {
-  if (num === 0) {
-    console.log('Zero');
-  } else if (num % 2 === 0) {
-    // 어떠한 숫자를 2로 나눴을 때 나누어 떨어지는 경우 = 짝수
-    console.log('Even');
-  } else if (num % 2 === 1) {
-    // 어떠한 숫자를 2로 나눴을 때 나누어 떨어지지 않는 경우 = 홀수
-    console.log('Odd');
+/** https://school.programmers.co.kr/learn/courses/30/lessons/12903
+ * 단어 s의 가운데 글자를 반환하는 함수
+ */
+function solution(s) {
+  let center = Math.floor(s.length / 2);
+  let answer = s[center];
+
+  if (s.length % 2 === 0) {
+    // 짝수일 경우 가운데 2글자를 가져온다.
+    answer = s[center - 1] + answer;
   }
+  return answer;
+}
+
+function solution(s) {
+  const center = Math.floor(s.length / 2);
+  const answer = s.length % 2 === 1 ? s.slice(center, center + 1) : s.slice(center - 1, center + 1);
+  return answer;
 }

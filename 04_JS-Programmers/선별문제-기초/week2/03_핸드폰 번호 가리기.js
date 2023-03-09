@@ -1,4 +1,8 @@
-// for 반복문
+/** https://school.programmers.co.kr/learn/courses/30/lessons/12948
+ *
+ * @param {*} phone_number
+ * @returns
+ */
 function solution(phone_number) {
   let answer = '';
 

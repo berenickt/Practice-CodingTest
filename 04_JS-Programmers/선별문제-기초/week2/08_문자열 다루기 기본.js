@@ -1,22 +1,30 @@
-function days(month) {
-  if (month === 1 || month === 3 || month === 5 || month === 7 || month === 8 || month === 10 || month === 12) {
-    return 31;
-  } else if (month === 2) {
-    return 28;
-  } else if (month === 4 || month === 6 || month === 9 || month === 11) {
-    return 30;
+/** https://school.programmers.co.kr/learn/courses/30/lessons/12918
+ * 문자열 s의 길이가 4 혹은 6이고, 숫자로만 구성돼있는지 확인해주는 함수
+ * for 반복문
+ */
+function solution(s) {
+  if (s.length !== 4 && s.length !== 6) {
+    return false;
   }
+
+  for (let i = 0; i < s.length; i++) {
+    if (isNaN(s[i])) {
+      return false;
+    }
+  }
+  return true;
 }
 
-// 1월 : 31일
-// 2월 : 28일
-// 3월 : 31일
-// 4월 : 30일
-// 5월 : 31일
-// 6월 : 30일
-// 7월 : 31일
-// 8월 : 31일
-// 9월 : 30일
-// 10월 : 31일
-// 11월 : 30일
-// 12월 : 31일
+// **** split, filter
+function solution2(s) {
+  if (s.length !== 4 && s.length !== 6) {
+    return false;
+  }
+
+  const answer = s.split('').filter((num) => {
+    // 데이터가 숫자가 아닌 문자타입만 남긴다.
+    // NaN 값인 데이터만 남긴다.
+    return isNaN(num);
+  });
+  return answer.length === 0;
+}
