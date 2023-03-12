@@ -12,8 +12,12 @@ function solution(s) {
   return answer;
 }
 
-function solution(s) {
+function solution2(s) {
   const center = Math.floor(s.length / 2);
   const answer = s.length % 2 === 1 ? s.slice(center, center + 1) : s.slice(center - 1, center + 1);
   return answer;
+}
+
+function solution3(array) {
+  return array.reduce((a, b) => a + b) / array.length;
 }

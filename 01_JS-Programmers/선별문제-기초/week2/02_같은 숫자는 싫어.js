@@ -16,3 +16,8 @@ function solution(arr) {
   }
   return answer;
 }
+
+function solution2(arr) {
+  const setArr = [...new Set(arr)];
+  return setArr;
+}

@@ -2,6 +2,7 @@
  * @param {*} s 문자열, s는 영문 대소문자로만 구성
  * @returns 문자를 큰것부터 작은 순으로 정렬해 새로운 문자열을 리턴
  * cf. 대문자는 소문자보다 작은 것으로 간주
+ * e.g. "Zbcdefg" => "gfedcbZ"
  */
 function solution(s) {
   const answer = [];
