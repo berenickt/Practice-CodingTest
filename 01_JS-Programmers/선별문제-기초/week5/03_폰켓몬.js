@@ -1,10 +1,56 @@
-/**
- * 주어진 student 객체에 'name'이라는 키를 만들고, "철수"를 할당하세요.
- */
+function solution(nums) {
+  const answer = [];
 
-const fruits = ['사과', '바나나', '파인애플'];
-const newFruits = [];
+  for (let i = 0; i < nums.length; i++) {
+    if (nums.length / 2 !== answer.length && answer.includes(nums[i]) === false) {
+      answer.push(nums[i]);
+    }
+  }
+  return answer.length;
+}
 
-newFruits.push(fruits[fruits.length - 1]);
+// **** for : new Set
+function solution2(nums) {
+  const answer = new Set([]);
 
-console.log(newFruits); // ["파인애플"]
+  for (let i = 0; i < nums.length; i++) {
+    if (nums.length / 2 !== answer.size) {
+      answer.add(nums[i]);
+    }
+  }
+  return answer.size;
+}
+
+// **** forEach
+function solution3(nums) {
+  const pocket = [];
+
+  nums.forEach(monster => {
+    if (pocket.includes(monster) === false && pocket.length < nums.length / 2) {
+      pocket.push(monster);
+    }
+  });
+  return pocket.length;
+}
+
+// **** forEach : new Set
+function solution4(nums) {
+  const pocket = new Set([]);
+
+  nums.forEach(monster => {
+    if (pocket.size < nums.length / 2) {
+      pocket.add(monster);
+    }
+  });
+  return pocket.size;
+}
+
+// **** new Set
+function solution5(nums) {
+  const answer = new Set(nums).size;
+  const limit = nums.length / 2;
+
+  if (limit >= answer) return answer;
+
+  return limit;
+}

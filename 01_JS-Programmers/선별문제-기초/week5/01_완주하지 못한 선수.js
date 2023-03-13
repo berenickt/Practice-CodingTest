@@ -1,17 +1,30 @@
-/**
- * 주어진 변수 fruits에 "사과", "바나나", "파인애플"을 담아주세요.
+/** https://school.programmers.co.kr/learn/courses/30/lessons/42576
+ * @param {*} participant 마라톤에 참여한 선수들의 이름이 담긴 배열
+ * @param {*} completion 완주한 선수들의 이름이 담긴 배열
+ * @returns 완주하지 못한 선수의 이름
  */
+function solution(participant, completion) {
+  participant.sort(); // 참가자 명단을 오름차순으로 정렬
+  completion.sort(); // 완주자 명단을 오름차순으로 정렬
 
-const fruits = [];
+  for (let i = 0; i < participant.length; i++) {
+    if (participant[i] !== completion[i]) {
+      // 참가자 명단과 완주자 명단을 비교했을 때
+      // 완주자 명단에 없는 참가자를 찾은 후, 바로 반복문을 종료
+      return participant[i];
+    }
+  }
+}
 
-// push
-fruits.push('사과');
-fruits.push('바나나');
-fruits.push('파인애플');
+// **** filte
+function solution2(participant, completion) {
+  participant.sort(); // 참가자 명단을 오름차순으로 정렬
+  completion.sort(); // 완주자 명단을 오름차순으로 정렬
 
-// index
-fruits[0] = '사과';
-fruits[1] = '바나나';
-fruits[2] = '파인애플';
+  const answer = participant.filter((name, i) => name !== completion[i]);
+  return answer[0];
+}
 
-console.log(fruits); // ["사과", "바나나", "파인애플"]
+console.log(solution(['leo', 'kiki', 'eden'], ['eden', 'kiki'])); // leo
+// console.log(solution(['marina', 'josipa', 'nikola', 'vinko', 'filipa'], ['josipa', 'filipa', 'marina', 'nikola']));
+// console.log(solution(['mislav', 'stanko', 'mislav', 'ana'], ['stanko', 'ana', 'mislav']));
