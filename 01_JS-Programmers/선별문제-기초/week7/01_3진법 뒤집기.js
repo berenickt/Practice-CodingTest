@@ -1,17 +1,24 @@
-/**
- * 주어진 변수 fruits에 "사과", "바나나", "파인애플"을 담아주세요.
+/** https://school.programmers.co.kr/learn/courses/30/lessons/68935
+ * @param {*} n 자연수
+ * @returns n을 3진법 상에서 앞뒤로 뒤집은 후, 이를 다시 10진법으로 표현한 수
  */
+function solution(n) {
+  // 3진법으로 변환
+  n = n.toString(3);
 
-const fruits = [];
+  let reverse = '';
+  for (let i = n.length - 1; i >= 0; i--) {
+    reverse += n[i];
+  }
+  // 3진법으로 변환된 데이터를 10진법으로 변환
+  return parseInt(reverse, 3);
+}
 
-// push
-fruits.push('사과');
-fruits.push('바나나');
-fruits.push('파인애플');
+function solution2(n) {
+  n = n.toString(3).split('').reverse().join('');
 
-// index
-fruits[0] = '사과';
-fruits[1] = '바나나';
-fruits[2] = '파인애플';
+  return parseInt(n, 3);
+}
 
-console.log(fruits); // ["사과", "바나나", "파인애플"]
+console.log(solution(45)); // 7
+console.log(solution(125)); // 229

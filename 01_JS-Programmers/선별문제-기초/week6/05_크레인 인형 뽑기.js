@@ -73,20 +73,25 @@ function solution2(board, moves) {
   let answer = 0;
   const bucket = [];
 
+  // 크레인이 이동하는 위치값을 순회
   moves.forEach(move => {
-    // 반복문을 실행하지 않게 하는 변수
-    // ( check가 false 일 때만 forEach 실행 )
-    let check = false;
+    let check = false; // 반복문을 실행하지 않게 하는 변수
 
+    // 크레인이 이동해서 뽑아올 수 있는 인형의 위치값을 순회, 0~4까지 행 순회
     board.forEach(location => {
       const doll = location[move - 1];
 
       if (check === false) {
+        // 인형이 있는 칸이 빈칸이 아니라면
         if (doll !== 0) {
+          // 방금 뽑은 인형의 위치를 빈칸으로 만들어준다.
           location[move - 1] = 0;
 
+          // 바구니에 넣으려고 하는 인형과 버켓의 마지막(맨 위에 있는) 인형이 동일하면,
           if (bucket[bucket.length - 1] === doll) {
             answer += 2;
+
+            // 뒤에 배열 요소 1개 제거 후 새 배열 반환
             bucket.splice(bucket.length - 1, 1);
           } else {
             bucket.push(doll);
